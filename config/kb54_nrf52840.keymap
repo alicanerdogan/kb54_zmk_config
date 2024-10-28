@@ -14,16 +14,16 @@
 
                 default_layer {
 // -----------------------------------------------------------------------------------------
-// |   `  |  1  |  2  |  3  |  4  |  5  |   |  6  |  7   |  8  |  9  |  0  |  DEL |
+// |  ESC |  1  |  2  |  3  |  4  |  5  |   |  6  |  7   |  8  |  9  |  0  |  DEL |
 // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
 // | SHFT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
+// | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |  `   |
 //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         bindings = <
-   &kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4 &kp N5    &kp N6 &kp N7 &kp N8    &kp N9  &kp N0   &kp DEL
+   &kp ESC   &kp N1 &kp N2 &kp N3 &kp N4 &kp N5    &kp N6 &kp N7 &kp N8    &kp N9  &kp N0   &kp DEL
    &kp TAB   &kp Q  &kp W  &kp E  &kp R  &kp T     &kp Y  &kp U  &kp I     &kp O   &kp P    &kp BSPC
    &kp LSHFT &kp A  &kp S  &kp D  &kp F  &kp G     &kp H  &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LCTRL &kp Z  &kp X  &kp C  &kp V  &kp B     &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
+   &kp LCTRL &kp Z  &kp X  &kp C  &kp V  &kp B     &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH &kp GRAVE
                         &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
                         >;
                 };
@@ -50,14 +50,14 @@
                     display-name = "RSE";
                     label = "RSE";
 // -----------------------------------------------------------------------------------------
-// |   `  | F1  | F2  | F3  | F4  | F5  |   | F6  | F7  | F8  | F9  | F10 |  DEL |
+// |  ESC | F1  | F2  | F3  | F4  | F5  |   | F6  | F7  | F8  | F9  | F10 |  DEL |
 // |  TAB | F11 | F12 |     | P/P | PRV |   | NXT | BR- | BR+ |  (  |  )  | BSPC |
 // | SHFT |     |VOL- |VOL+ |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
 // | CTRL |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   &kp GRAVE &kp F1     &kp F2          &kp F3          &kp F4      &kp F5              &kp F6      &kp F7          &kp F8          &kp F9      &kp F10  &kp DEL
-   &kp  TAB  &kp F11    &kp F12         &trans          &kp C_PP    &kp C_PREV          &kp C_NEXT  &kp C_BRI_DN    &kp C_BRI_UP    &kp LPAR    &kp RPAR &kp BSPC
+   &kp ESC   &kp F1     &kp F2          &kp F3          &kp F4      &kp F5              &kp F6      &kp F7          &kp F8          &kp F9      &kp F10  &kp DEL
+   &kp TAB   &kp F11    &kp F12         &trans          &kp C_PP    &kp C_PREV          &kp C_NEXT  &kp C_BRI_DN    &kp C_BRI_UP    &kp LPAR    &kp RPAR &kp BSPC
    &kp LSHFT &trans     &kp C_VOL_DN    &kp C_VOL_UP    &trans      &trans              &kp MINUS   &kp EQUAL       &kp LBKT        &kp RBKT    &kp BSLH &kp GRAVE
    &kp LCTRL &trans     &trans          &trans          &trans      &trans              &kp UNDER   &kp PLUS        &kp LBRC        &kp RBRC    &kp PIPE &kp TILDE
                                         &kp LGUI        &trans      &kp SPACE           &kp RET     &trans          &kp RALT
