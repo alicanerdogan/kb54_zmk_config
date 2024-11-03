@@ -40,6 +40,42 @@
                 label = "HOLD_TO_TOGGLE_LAYER";
                 quick-tap-ms = <0>;
             };
+            mwtl: behavior_move_window_top_left {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp LS(LG(LEFT))>, <&kp LH(N0)>;
+                mods = <(MOD_LSFT|MOD_RSFT)>;
+            };
+            mwl: behavior_move_window_left {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp LEFT>, <&mwtl>;
+                mods = <(MOD_LGUI|MOD_RGUI)>;
+            };
+            mwtr: behavior_move_window_top_right {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp LS(LG(RIGHT))>, <&kp LH(N1)>;
+                mods = <(MOD_LSFT|MOD_RSFT)>;
+            };
+            mwr: behavior_move_window_right {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp RIGHT>, <&mwtr>;
+                mods = <(MOD_LGUI|MOD_RGUI)>;
+            };
+            mwt: behavior_move_window_top {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp UP>, <&kp LS(LG(UP))>;
+                mods = <(MOD_LGUI|MOD_RGUI)>;
+            };
+            mwb: behavior_move_window_bottom {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp DOWN>, <&kp LS(LG(DOWN))>;
+                mods = <(MOD_LGUI|MOD_RGUI)>;
+            };
         };
         keymap {
                 compatible = "zmk,keymap";
@@ -106,10 +142,10 @@
 // | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | CTRL |
 //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         bindings = <
-   &tog MACRO_LAYER &kp N0 &kp N0 &kp N0   &kp N0 &kp N0    &kp N0  &kp N0 &kp N0    &kp N0  &kp N0   &kp DEL
-   &kp  TAB         &kp Q  &kp W  &kp E    &kp R  &kp T     &kp Y   &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp  LSHFT       &kp A  &kp S  &kp D    &kp F  &kp G     &kp H   &kp J  &kp K     &kp L   &kp SEMI &kp RSHFT
-   &kp  LCTRL       &kp Z  &kp X  &kp C    &kp V  &kp B     &kp N   &kp M  &kp COMMA &kp DOT &kp FSLH &kp RCTRL
+   &tog MACRO_LAYER &kp N0 &kp N0 &kp N0   &kp N0 &kp N0    &kp N0  &kp N0 &kp N0    &kp N0      &kp N0   &kp DEL
+   &kp  TAB         &kp Q  &kp W  &kp E    &kp R  &kp T     &kp Y   &kp U  &kp I     &kp O       &kp P    &kp BSPC
+   &kp  LSHFT       &kp A  &kp S  &kp D    &kp F  &kp G     &mwl    &mwb   &mwt      &mwr        &kp SEMI &kp RSHFT
+   &kp  LCTRL       &kp Z  &kp X  &kp C    &kp V  &kp B     &kp N   &kp M  &kp COMMA &key_repeat &kp FSLH &kp RCTRL
                                   &kp LGUI &mo 1  &kp SPACE &kp RET &mo 2  &kp RALT
                         >;
                 };
