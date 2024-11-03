@@ -1,6 +1,12 @@
 #!/bin/bash
 
+set -e
+
 SOURCE_DIR=$(pwd)
-TARGET_DIR=/home/ubuntu
-docker build -t zmklocal:latest --build-arg ZEPHYR_VERSION=3.5.0 --build-arg ARCHITECTURE=arm --build-arg ZEPHYR_SDK_VERSION=0.16.3 .  
-docker run -v $SOURCE_DIR:$TARGET_DIR -it zmklocal:latest /bin/bash                                                                                        
+TARGET_DIR=/home/ubuntu/kb54_zmk_config
+
+docker run -it\
+  -v $SOURCE_DIR:$TARGET_DIR \
+  --entrypoint "/bin/bash" \
+  -e HOME_DIR=$TARGET_DIR \
+  zmkfirmware/zmk-build-arm:stable "$TARGET_DIR/scripts/build.sh"

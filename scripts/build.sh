@@ -1,8 +1,19 @@
 !#/bin/bash
-HOME_DIR=/home/ubuntu
-ZMK_CONFIG=$HOME_DIR/config
+set -x
 
-west init -l $ZMK_CONFIG
+ZEPHYR_VERSION=3.5.0
+
+# Check if HOME_DIR is set
+if [ -z "$HOME_DIR" ]
+then
+  echo "HOME_DIR is not set"
+  exit 1
+fi
+
+ZMK_CONFIG="$HOME_DIR/config"
+
+cd $HOME_DIR
+west init -l ./config
 
 set -e
 west update
