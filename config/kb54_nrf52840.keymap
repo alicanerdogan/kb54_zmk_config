@@ -25,7 +25,22 @@
 #define RM(key) RS(RC(RA(key)))
 #define RMEH RIGHT_MEH
 
+// USER DEFINED LAYERS
+#define MACRO_LAYER 3
+
 / {
+        behaviors {
+            hold_to_toggle_layer: behavior_hold_to_toggle_layer {
+                compatible = "zmk,behavior-hold-tap";
+                #binding-cells = <2>;
+                flavor = "hold-preferred";
+                tapping-term-ms = <200>;
+                bindings = <&tog>, <&kp>;
+
+                label = "HOLD_TO_TOGGLE_LAYER";
+                quick-tap-ms = <0>;
+            };
+        };
         keymap {
                 compatible = "zmk,keymap";
 
@@ -37,11 +52,11 @@
 // | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | CTRL |
 //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         bindings = <
-   &kp ESC   &kp N1 &kp N2 &kp N3 &kp N4 &kp N5    &kp N6 &kp N7 &kp N8    &kp N9  &kp N0   &kp DEL
-   &kp TAB   &kp Q  &kp W  &kp E  &kp R  &kp T     &kp Y  &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LSHFT &kp A  &kp S  &kp D  &kp F  &kp G     &kp H  &kp J  &kp K     &kp L   &kp SEMI &kp RSHFT
-   &kp LCTRL &kp Z  &kp X  &kp C  &kp V  &kp B     &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH &kp RCTRL
-                        &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+   &hold_to_toggle_layer MACRO_LAYER ESC  &kp N1 &kp N2 &kp N3   &kp N4 &kp N5    &kp N6  &kp N7 &kp N8    &kp N9  &kp N0   &kp DEL
+   &kp TAB                                &kp Q  &kp W  &kp E    &kp R  &kp T     &kp Y   &kp U  &kp I     &kp O   &kp P    &kp BSPC
+   &kp LSHFT                              &kp A  &kp S  &kp D    &kp F  &kp G     &kp H   &kp J  &kp K     &kp L   &kp SEMI &kp RSHFT
+   &kp LCTRL                              &kp Z  &kp X  &kp C    &kp V  &kp B     &kp N   &kp M  &kp COMMA &kp DOT &kp FSLH &kp RCTRL
+                                                        &kp LGUI &mo 1  &kp SPACE &kp RET &mo 2  &kp RALT
                         >;
                 };
 
@@ -78,6 +93,24 @@
    &kp MINUS  &kp LBKT   &kp RBKT  &kp LBRC  &kp RBRC  &kp SQT    &kp BSLH   &kp GRAVE &kp PIPE   &trans    &trans    &trans
    &kp UNDER  &kp EQUAL  &kp PLUS  &kp LPAR  &kp RPAR  &kp DQT    &kp TILDE  &trans    &trans     &trans    &trans    &trans
                                    &kp LGUI  &trans    &kp SPACE  &kp RET    &trans    &kp RALT
+                        >;
+                };
+
+                macro_layer {
+                    display-name = "MCR";
+                    label = "MCR";
+// -----------------------------------------------------------------------------------------
+// |      |  1  |  2  |  3  |  4  |  5  |   |  6  |  7   |  8  |  9  |  0  |  DEL |
+// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
+// | SHFT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  | SHFT |
+// | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | CTRL |
+//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+                        bindings = <
+   &tog MACRO_LAYER &kp N0 &kp N0 &kp N0   &kp N0 &kp N0    &kp N0  &kp N0 &kp N0    &kp N0  &kp N0   &kp DEL
+   &kp  TAB         &kp Q  &kp W  &kp E    &kp R  &kp T     &kp Y   &kp U  &kp I     &kp O   &kp P    &kp BSPC
+   &kp  LSHFT       &kp A  &kp S  &kp D    &kp F  &kp G     &kp H   &kp J  &kp K     &kp L   &kp SEMI &kp RSHFT
+   &kp  LCTRL       &kp Z  &kp X  &kp C    &kp V  &kp B     &kp N   &kp M  &kp COMMA &kp DOT &kp FSLH &kp RCTRL
+                                  &kp LGUI &mo 1  &kp SPACE &kp RET &mo 2  &kp RALT
                         >;
                 };
         };
