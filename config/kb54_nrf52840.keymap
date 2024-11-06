@@ -40,10 +40,16 @@
                 label = "HOLD_TO_TOGGLE_LAYER";
                 quick-tap-ms = <0>;
             };
+            mwbl: behavior_move_window_bottom_left {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp LS(LG(LEFT))>, <&kp LH(N2)>;
+                mods = <(MOD_LCTL|MOD_RCTL)>;
+            };
             mwtl: behavior_move_window_top_left {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                bindings = <&kp LS(LG(LEFT))>, <&kp LH(N0)>;
+                bindings = <&mwbl>, <&kp LH(N0)>;
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
             mwl: behavior_move_window_left {
@@ -52,10 +58,16 @@
                 bindings = <&kp LEFT>, <&mwtl>;
                 mods = <(MOD_LGUI|MOD_RGUI)>;
             };
+            mwbr: behavior_move_window_bottom_right {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp LS(LG(RIGHT))>, <&kp LH(N3)>;
+                mods = <(MOD_LCTL|MOD_RCTL)>;
+            };
             mwtr: behavior_move_window_top_right {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                bindings = <&kp LS(LG(RIGHT))>, <&kp LH(N1)>;
+                bindings = <&mwbr>, <&kp LH(N1)>;
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
             mwr: behavior_move_window_right {
@@ -67,13 +79,13 @@
             mwt: behavior_move_window_top {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                bindings = <&kp UP>, <&kp LS(LG(UP))>;
+                bindings = <&kp UP>, <&kp LH(N4)>;
                 mods = <(MOD_LGUI|MOD_RGUI)>;
             };
             mwb: behavior_move_window_bottom {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                bindings = <&kp DOWN>, <&kp LS(LG(DOWN))>;
+                bindings = <&kp DOWN>, <&kp LH(N5)>;
                 mods = <(MOD_LGUI|MOD_RGUI)>;
             };
         };
