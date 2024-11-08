@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 set -x
 
 ZEPHYR_VERSION=3.5.0
