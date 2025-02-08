@@ -3,10 +3,14 @@ set -x
 
 ZEPHYR_VERSION=3.5.0
 
-# Check if HOME_DIR is set
 if [ -z "$HOME_DIR" ]
 then
   echo "HOME_DIR is not set"
+  exit 1
+fi
+if [ -z "$ARTIFACT_DIR" ]
+then
+  echo "ARTIFACT_DIR is not set"
   exit 1
 fi
 
@@ -65,10 +69,11 @@ BUILD_DIR_R="$(mktemp -d)"
 build_firmware $DISPLAY_NAME_R $BUILD_DIR_R
 
 # Copy artifacts into home directory
-cp -r $BUILD_DIR_L/artifacts $HOME_DIR
+mkdir -p $ARTIFACT_DIR
+cp -r $BUILD_DIR_L/artifacts/* $ARTIFACT_DIR/
 rm -rf $BUILD_DIR_L
-cp -r $BUILD_DIR_R/artifacts $HOME_DIR
+cp -r $BUILD_DIR_R/artifacts/* $ARTIFACT_DIR/
 rm -rf $BUILD_DIR_R
 
-ls -l $HOME_DIR/artifacts
+ls -l $ARTIFACT_DIR
 

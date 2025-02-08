@@ -12,6 +12,14 @@ It is possible to build the firmware locally using docker. Under scripts directo
 
 After the build script is executed, the firmware files will be available under the `artifacts` directory.
 
+An optional argument can be passed to the build script to specify artifact directory as follows:
+```bash
+./scripts/docker.build.sh kb54_workstation
+
+# and the binaries will be available under this directory
+# ./artifacts/kb54_workstation
+```
+
 Without docker, the complete toolchain for zmk has to be locally available. After that, the firmware can be built using the following command.
 
 ```bash
